@@ -23,14 +23,14 @@ class Day(models.Model):
     day = models.CharField(max_length=20, choices=DaysOfWeek, unique=True)
     
     def __str__(self):
-        return f"{self.group_name} - {self.day}"
+        return f"{self.day}"
 
     
 class Teacher(models.Model):
     name = models.CharField(max_length=50, default="-")
     
     def __str__(self):
-        return f"Преподаватель: {self.name}"
+        return f"{self.name}"
 
     
 class Lesson(models.Model):
