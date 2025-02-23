@@ -505,6 +505,7 @@ Temporary Items
 
 # Built Visual Studio Code Extensions
 *.vsix
+.vscode
 
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
