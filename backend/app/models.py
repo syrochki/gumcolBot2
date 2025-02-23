@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import time
+from datetime import time, timedelta, datetime
 
 # Create your models here.
 
@@ -73,28 +73,20 @@ class Lesson(models.Model):
         (time(17, 50), '17:50'),
         (time(18, 45), '18:45')
     ]
-    
-    time_end_choices = [
-        (time(9, 15), '9:15'),
-        (time(10, 10), '10:10'),
-        (time(11, 5), '11:05'),
-        (time(12, 00), '12:00'),
-        (time(13, 5), '13:05'),
-        (time(14, 0), '14:00'),
-        (time(14, 55), '14:55'),
-        (time(15, 50), '15:50'),
-        (time(16, 45), '16:45'),
-        (time(17, 40), '17:40'),
-        (time(18, 35), '18:35'),
-        (time(19, 30), '19:30')
-    ]
 
     day = models.ForeignKey(Day, on_delete=models.CASCADE, related_name='day_key')
     subject =  models.CharField(max_length=20, choices=subjects)
     lesson_starts_time = models.TimeField(choices=time_starts_choices)
-    lesson_ends_time = models.TimeField(choices=time_end_choices)
+    lesson_ends_time = models.TimeField(editable=False)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='teacher_key')
     classroom = models.CharField(max_length=10)
+    
+    """обязательное название для метода переопределения стандартного сохранения модели в Django -- save"""
+    def save(self, *args, **kwargs):
+        """Автоматическое сохрание lesson_ends_time как lesson_starts_time + 45 минут"""
+        if self.time_starts_choices: # проверка на присутствие lesson_starts_time(установлено ли оно)
+            self.lesson_ends_time = (datetime.combine(datetime.today(), self.lesson_starts_time) + timedelta(minutes=45)).time()
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return f"{self.subject} {self.lesson_starts_time}-{self.lesson_ends_time} {self.classroom}"
