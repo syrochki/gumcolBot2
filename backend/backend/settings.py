@@ -14,6 +14,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
+import threading
+from django.core.management import call_command
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,8 +37,7 @@ FRONT_SITE = os.getenv('FRONT_SITE')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '127.0.01']
 
 # Application definition
 
@@ -46,8 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',
-    'rest_framework'
+    'rest_framework',
+    'app.apps.BotAppConfig',
 ]
 
 REST_FRAMEWORK = {
