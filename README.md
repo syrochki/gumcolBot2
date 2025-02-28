@@ -1,23 +1,27 @@
 ### Telegram бот-расписание c бекендом на Django и miniApp на Vue.js 3.
 
-Скачать репозиторий:
-git clone https://github.com/VedroMan/gumcolBot2/
+<b>Скачать репозиторий</b>:
 
-Активировать виртуальное окружение python:
-MacOS и Linux: source .venv/bin/activate
-Windows: .venv\Scripts\activate.bat
+<i>git clone https://github.com/VedroMan/gumcolBot2/</i>
 
-Установить зависимости:
+<b>Активировать виртуальное окружение python</b>:
+
+MacOS и Linux: <i>source .venv/bin/activate</i>
+
+Windows: <i>.venv\Scripts\activate.bat</i>
+
+<b>Установить зависимости</b>:
+
 pip install -r requirements.txt
 
-#### Пароли(ключи)
+<b>Пароли(ключи)</b>
 
 После проделанных операций добавьте файл .env в директории backend, прописав в нём:
-ADMIN_ID= # id администратора бота
-API_URL= # адрес API в бекенде
-BASE_SITE= # адрес сервера
-SECRET_KEY= # секретный ключ django
-BOT_TOKEN= # токен бота
-TG_API_SITE= # адрес API телеграма
-FRONT_SITE= # адрес фронтенда
 
+ADMIN_ID= # id администратора бота<br>
+API_URL= # адрес API в бекенде<br>
+BASE_SITE= # адрес сервера<br>
+SECRET_KEY= # секретный ключ django<br>
+BOT_TOKEN= # токен бота<br>
+TG_API_SITE= # адрес API телеграма<br>
+FRONT_SITE= # адрес фронтенда<br>
