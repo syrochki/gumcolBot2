@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'app.apps.BotAppConfig',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -71,6 +72,8 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # подключаем corsheaders для того, чтобы vue мог делать запросы к API
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,6 +84,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'backend.urls'
+
+# Домены с которых разрешено делать запросы к API
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+]
 
 TEMPLATES = [
     {
