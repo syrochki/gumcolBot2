@@ -11,8 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 TOKEN = os.getenv('BOT_TOKEN')
-API_URL = "http://127.0.0.1:8000/api/lessons/"  # URL API
-DAYS_API = "http://127.0.0.1:8000/api/days/"
+API_URL = "http://127.0.0.1:8000/api/"  # URL API
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
@@ -25,7 +24,7 @@ async def start_handler(message: types.Message):
             [
                 types.KeyboardButton(
                 text="📅 Открыть расписание",
-                web_app=WebAppInfo(url="https://78bd-219-100-37-234.ngrok-free.app"))
+                web_app=WebAppInfo(url="---"))
             ]
         ],
         resize_keyboard=True
@@ -36,7 +35,7 @@ async def start_handler(message: types.Message):
 @dp.message(Command("schedule"))
 async def schedule_handler(message: types.Message):
     async with aiohttp.ClientSession() as session:
-        async with session.get(API_URL) as response:
+        async with session.get(f"{API_URL}/lessons/") as response:
             if response.status == 200:
                 data = await response.json()
                 text = "\n".join([f"{lesson['day']}: {lesson['subject']} - {lesson['teacher']}. Кабинет: {lesson['classroom']}" for lesson in data])
@@ -48,7 +47,7 @@ async def schedule_handler(message: types.Message):
 @dp.message(Command("days"))
 async def day_handler(message: types.Message):
     async with aiohttp.ClientSession() as session:
-        async with session.get(DAYS_API) as response:
+        async with session.get(f"{API_URL}/days/") as response:
             if response.status == 200:
                 data = await response.json()
                 text = "\n".join([f"{day['day']}" for day in data])

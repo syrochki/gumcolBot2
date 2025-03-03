@@ -37,7 +37,11 @@ FRONT_SITE = os.getenv('FRONT_SITE')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '127.0.01']
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1', 
+    '127.0.01'
+]
 
 # Application definition
 
@@ -87,8 +91,11 @@ ROOT_URLCONF = 'backend.urls'
 
 # Домены с которых разрешено делать запросы к API
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
+    "http://localhost:3000",
+    "http://192.168.0.227:3000",
+    "http://10.234.66.231:3000"
 ]
+
 
 TEMPLATES = [
     {
