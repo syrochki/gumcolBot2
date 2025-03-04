@@ -52,6 +52,7 @@ class Lesson(models.Model):
         ('Хороведение', 'Хороведение'),
         ('Физ-ра', 'Физ-ра'),
         ('Информатика', 'Информатика'),
+        ('МКТ', 'МКТ'),
         ('История', 'История'),
         ('Обществоведение', 'Обществоведение'),
         ('Классный час', 'Классный час'),
@@ -89,4 +90,4 @@ class Lesson(models.Model):
         super().save(*args, **kwargs)
     
     def __str__(self):
-        return f"{self.subject} {self.lesson_starts_time}-{self.lesson_ends_time} {self.classroom}"
+        return f"{self.subject} {self.lesson_starts_time.strftime('%H:%M')}-{self.lesson_ends_time.strftime('%H:%M')} {self.classroom}"
