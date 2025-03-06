@@ -29,7 +29,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 ADMIN_ID = os.getenv('ADMIN_ID')
-BASE_SITE = os.getenv('BASE_SITE')
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 TG_API_SITE = os.getenv('TG_API_SITE')
 FRONT_SITE = os.getenv('FRONT_SITE')
@@ -92,8 +91,9 @@ ROOT_URLCONF = 'backend.urls'
 # Домены с которых разрешено делать запросы к API
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://192.168.0.227:3000",
-    "http://10.234.66.231:3000"
+    "http://10.234.66.231:3000",
+    "https://f375-219-100-37-234.ngrok-free.app",
+    FRONT_SITE,
 ]
 
 

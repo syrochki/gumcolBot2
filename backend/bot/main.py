@@ -24,7 +24,7 @@ async def start_handler(message: types.Message):
             [
                 types.KeyboardButton(
                 text="📅 Открыть расписание",
-                web_app=WebAppInfo(url="---"))
+                web_app=WebAppInfo(url="https://f375-219-100-37-234.ngrok-free.app"))
             ]
         ],
         resize_keyboard=True
